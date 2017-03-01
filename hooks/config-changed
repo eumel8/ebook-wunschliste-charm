@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eux
+
+status-set maintenance "Configuring ebook wishlist"
+
+AWSSecretKey=`config-get AWSSecretKey`
+AWSAccessKeyId=`config-get AWSAccessKeyId`
+AssociateTag=`config-get AssociateTag`
+
+
+if [ -n "${AWSSecretKey}" ] ; then
+sed -i -e "s/^\$AWSSecretKey.*/\$AWSSecretKey='${AWSSecretKey}';/" /var/www/html/ebooks/config.php
+fi
+
+if [ -n "${AWSAccessKeyId}" ] ; then
+sed -i -e "s/^\$AWSAccessKeyId.*/\$AWSAccessKeyId='${AWSAccessKeyId}';/" /var/www/html/ebooks/config.php
+fi
+
+if [ -n "${AssociateTag}" ] ; then
+sed -i -e "s/^\$AssociateTag.*/\$AssociateTag='${AssociateTag}';/" /var/www/html/ebooks/config.php
+fi
+
+status-set active "application up-to-date"
+

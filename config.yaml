@@ -1,0 +1,14 @@
+options:
+  AWSAccessKeyId:
+    type: string
+    default: ""
+    description: "AWSAccessKeyId to connect AWS"
+  AWSSecretKey:
+    type: string
+    default: ""
+    description: "AWSSecretKey to connect AWS"
+  AssociateTag:
+    type: string
+    default: ""
+    description: "AssociateTag for AWS"
+
